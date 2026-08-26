@@ -142,22 +142,6 @@ See `TEST_DATA.md` for detailed data documentation.
 - **PROJECT_REPORT.md** — Comprehensive project documentation
 - **TEST_DATA.md** — Test data documentation and scenarios
 
-## License
-
-MIT License — feel free to use this project for learning and development.
-
----
-
-This project was built with [Lovable](https://lovable.dev).
-
-## Build with Love
-
-Continue developing this project in the [Lovable editor](https://lovable.dev/projects/580746c4-84e8-46b1-bf8d-8817d4178644).
-
-- **Ship faster**: describe what you want to build and Lovable handles the code.
-- **Stay in sync**: every change made in Lovable is committed straight to this repository.
-- **Full ownership**: this code is yours. Push to `main` on GitHub and your changes sync back into Lovable, ready for your next prompt.
-
 ## Development
 
 Prefer working locally? You need Node.js and npm — [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating).
