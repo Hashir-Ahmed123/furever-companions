@@ -1,0 +1,65 @@
+[
+  {
+    "id": "ec001",
+    "name": "FurEver Care 24/7 Emergency Line",
+    "type": "Emergency Vet",
+    "phone": "+92-42-111-555-111",
+    "hours": "24 hours, every day",
+    "note": "First call for trauma, breathing difficulty, seizures or collapse. Lahore-based.",
+    "severity": "critical"
+  },
+  {
+    "id": "ec002",
+    "name": "Pet Poison Helpline Pakistan",
+    "type": "Poison Control",
+    "phone": "+92-300-8765432",
+    "hours": "24 hours, every day",
+    "note": "Chocolate, rat poison, phenyl, naswar and medication ingestion.",
+    "severity": "critical"
+  },
+  {
+    "id": "ec003",
+    "name": "UVAS Pet Center Emergency, Lahore",
+    "type": "Emergency Vet",
+    "phone": "+92-42-99211449",
+    "hours": "24 hours, every day",
+    "note": "University of Veterinary & Animal Sciences teaching hospital with on-site imaging.",
+    "severity": "critical"
+  },
+  {
+    "id": "ec004",
+    "name": "Karachi Animal Hospital (ACF)",
+    "type": "Emergency Vet",
+    "phone": "+92-21-34310123",
+    "hours": "18:00 - 08:00 weekdays, 24h weekends",
+    "note": "Walk-in emergency intake with surgery facilities in Korangi.",
+    "severity": "high"
+  },
+  {
+    "id": "ec005",
+    "name": "Islamabad Mobile Vet Unit",
+    "type": "Mobile Response",
+    "phone": "+92-51-2345678",
+    "hours": "07:00 - 22:00 daily",
+    "note": "Home visits for pets too unstable or anxious to transport.",
+    "severity": "high"
+  },
+  {
+    "id": "ec006",
+    "name": "JFK Animal Rescue & Shelter",
+    "type": "Rescue",
+    "phone": "+92-333-1122334",
+    "hours": "24 hours, every day",
+    "note": "Report injured strays, donkeys, or suspected cruelty anywhere in Punjab.",
+    "severity": "medium"
+  },
+  {
+    "id": "ec007",
+    "name": "Pet Blood Donor Network Pakistan",
+    "type": "Specialist",
+    "phone": "+92-322-4455667",
+    "hours": "08:00 - 20:00 daily",
+    "note": "Urgent transfusion coordination for canine and feline patients.",
+    "severity": "medium"
+  }
+]

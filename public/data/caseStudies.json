@@ -1,0 +1,38 @@
+[
+  {
+    "id": "cs001",
+    "petName": "Sheru",
+    "species": "Dog",
+    "condition": "Cruciate ligament tear",
+    "summary": "Two-year-old Labrador mix brought to a Lahore clinic with hind-leg lameness after a Model Town park injury.",
+    "treatment": "TPLO surgery followed by eight weeks of controlled leash rehab. Full weight-bearing restored at week six.",
+    "outcome": "Discharged fully sound; back to daily fetch at three months. Total cost approx. Rs 145,000."
+  },
+  {
+    "id": "cs002",
+    "petName": "Billi Rani",
+    "species": "Cat",
+    "condition": "Feline lower urinary tract disease",
+    "summary": "One-year-old Persian mix in Karachi with straining and blood-tinged urine over three days.",
+    "treatment": "Catheterisation, IV fluids, pain control, and a switch to a wet urinary diet with added water bowls.",
+    "outcome": "No recurrence in twelve months of follow-up. Treatment cost approx. Rs 38,000."
+  },
+  {
+    "id": "cs003",
+    "petName": "Moti",
+    "species": "Dog",
+    "condition": "Tick fever (Ehrlichiosis)",
+    "summary": "Four-year-old rescue in Rawalpindi with fever, lethargy and low platelets during peak tick season.",
+    "treatment": "Doxycycline course, supportive fluids, and a monthly spot-on tick preventive for the whole household.",
+    "outcome": "Platelets normalised in three weeks. Owner now follows a year-round tick plan. Cost approx. Rs 22,000."
+  },
+  {
+    "id": "cs004",
+    "petName": "Gajar",
+    "species": "Rabbit",
+    "condition": "Dental malocclusion",
+    "summary": "Mini Lop in Islamabad with reduced appetite, drooling, and weight loss.",
+    "treatment": "Crown reduction under sedation, syringe feeding for four days, and a permanent hay-first diet.",
+    "outcome": "Weight regained; burring rechecks every six months. Cost approx. Rs 15,500."
+  }
+]

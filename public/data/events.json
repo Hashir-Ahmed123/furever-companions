@@ -1,0 +1,44 @@
+[
+  {
+    "id": "e001",
+    "title": "Weekend Adoption Drive",
+    "date": "Saturday, 12 September - 10:00 to 16:00",
+    "location": "Racecourse Park (Jilani Park), Lahore",
+    "description": "Meet 20 adoptable dogs, cats and rabbits. Adoption counsellors on site all day."
+  },
+  {
+    "id": "e002",
+    "title": "Free Vaccination Camp",
+    "date": "Sunday, 20 September - 09:00 to 14:00",
+    "location": "FurEver Care Clinic, Gulberg III, Lahore",
+    "description": "Core vaccines and deworming for rescued and low-income household pets."
+  },
+  {
+    "id": "e003",
+    "title": "Microchipping & ID Day",
+    "date": "Saturday, 3 October - 11:00 to 15:00",
+    "location": "FurEver Shelter Courtyard, DHA Phase 5, Karachi",
+    "description": "Microchipping at Rs 2,500 with a free engraved ID tag while stocks last."
+  },
+  {
+    "id": "e004",
+    "title": "Puppy Socialisation Workshop",
+    "date": "Sunday, 11 October - 10:30 to 12:30",
+    "location": "FurEver Care Training Hall, F-7 Markaz, Islamabad",
+    "description": "Trainer-led class for puppies aged 8 to 16 weeks. Rs 1,500 per pup, 12 places only."
+  },
+  {
+    "id": "e005",
+    "title": "Senior Pet Wellness Clinic",
+    "date": "Saturday, 24 October - 09:00 to 13:00",
+    "location": "Mobile Unit, Bahria Town, Rawalpindi",
+    "description": "Free mobility and dental screenings for pets aged seven and over."
+  },
+  {
+    "id": "e006",
+    "title": "Foster Volunteer Orientation",
+    "date": "Wednesday, 4 November - 18:00 to 19:30",
+    "location": "FurEver Shelter Meeting Room, Peshawar Road",
+    "description": "Everything you need to know before fostering your first rescue."
+  }
+]

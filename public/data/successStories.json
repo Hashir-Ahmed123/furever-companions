@@ -1,0 +1,34 @@
+[
+  {
+    "id": "ss001",
+    "petName": "Waffle",
+    "adopter": "The Ahmed Family, Lahore",
+    "year": "2024",
+    "story": "Waffle waited 11 months after being found on the Ring Road shoulder. Today he supervises homework, naps on three different sofas, and has decided monsoon thunder is survivable.",
+    "image": "https://images.unsplash.com/photo-1477884213360-7e9d7dcc1e48?w=600&q=80"
+  },
+  {
+    "id": "ss002",
+    "petName": "Zeta",
+    "adopter": "Hira & Saad, Karachi",
+    "year": "2025",
+    "story": "A shy tortoiseshell who hid behind her litter box for weeks. Six months on she greets guests at the door and sleeps curled against Saad's neck every night.",
+    "image": "https://images.unsplash.com/photo-1518791841217-8f162f1e1131?w=600&q=80"
+  },
+  {
+    "id": "ss003",
+    "petName": "Munna",
+    "adopter": "Ms. Nadia Baig, Islamabad",
+    "year": "2025",
+    "story": "Surrendered with an untreated ear infection, Munna the rabbit now free-roams a sunny F-11 flat and has a documented weakness for coriander.",
+    "image": "https://images.unsplash.com/photo-1519098901909-b1553a1190af?w=600&q=80"
+  },
+  {
+    "id": "ss004",
+    "petName": "Raja",
+    "adopter": "Jibran R., Murree",
+    "year": "2023",
+    "story": "A ten-year-old shepherd nobody expected to place. Raja found a retired hiker who wanted a slow companion, and the pair have logged 400 gentle kilometres on the Pindi Point trails.",
+    "image": "https://images.unsplash.com/photo-1568572933382-74d440642117?w=600&q=80"
+  }
+]

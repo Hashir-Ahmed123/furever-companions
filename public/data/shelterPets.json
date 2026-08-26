@@ -1,0 +1,74 @@
+[
+  {
+    "id": "sp001",
+    "name": "Sheru",
+    "type": "Dog",
+    "age": "2 years",
+    "breed": "Desi Labrador Mix",
+    "description": "Friendly and energetic, rescued from Ferozepur Road, Lahore. Great with children.",
+    "image": "https://images.unsplash.com/photo-1552053831-71594a27632d?w=600&q=80"
+  },
+  {
+    "id": "sp002",
+    "name": "Billi Rani",
+    "type": "Cat",
+    "age": "1 year",
+    "breed": "Persian Mix",
+    "description": "Curious lap cat found near Empress Market, Karachi. Loves sunny windowsills.",
+    "image": "https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?w=600&q=80"
+  },
+  {
+    "id": "sp003",
+    "name": "Gajar",
+    "type": "Rabbit",
+    "age": "8 months",
+    "breed": "Mini Lop",
+    "description": "Gentle and litter trained, adores fresh dhania and carrots.",
+    "image": "https://images.unsplash.com/photo-1585110396000-c9ffd4e4b308?w=600&q=80"
+  },
+  {
+    "id": "sp004",
+    "name": "Moti",
+    "type": "Dog",
+    "age": "4 years",
+    "breed": "Pakistani Bully Mix",
+    "description": "Calm walking buddy rescued in Rawalpindi, unbeatable nose for treats.",
+    "image": "https://images.unsplash.com/photo-1505628346881-b72b27e84530?w=600&q=80"
+  },
+  {
+    "id": "sp005",
+    "name": "Chandni",
+    "type": "Cat",
+    "age": "3 years",
+    "breed": "Domestic Shorthair",
+    "description": "Quiet and independent, perfect for apartment living in Islamabad.",
+    "image": "https://images.unsplash.com/photo-1495360010541-f48722b34f7d?w=600&q=80"
+  },
+  {
+    "id": "sp006",
+    "name": "Laddu",
+    "type": "Rabbit",
+    "age": "2 years",
+    "breed": "Dutch",
+    "description": "Bonded with Gajar and would love to be adopted together.",
+    "image": "https://images.unsplash.com/photo-1596854407944-bf87f6fdd49e?w=600&q=80"
+  },
+  {
+    "id": "sp007",
+    "name": "Kaju",
+    "type": "Dog",
+    "age": "6 months",
+    "breed": "Golden Retriever Mix",
+    "description": "Playful Faisalabad pup, already halfway through crate training.",
+    "image": "https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?w=600&q=80"
+  },
+  {
+    "id": "sp008",
+    "name": "Mithu",
+    "type": "Cat",
+    "age": "5 years",
+    "breed": "Orange Tabby",
+    "description": "Mellow senior-in-training rescued from Saddar, Peshawar.",
+    "image": "https://images.unsplash.com/photo-1533738363-b7f9aef128ce?w=600&q=80"
+  }
+]
