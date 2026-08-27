@@ -84,12 +84,12 @@ export function AppShell({ children }: { children: ReactNode }) {
   return (
     <div className="flex min-h-screen flex-col">
       <Ticker />
-      <header className="sticky top-0 z-40 border-b border-border bg-background/85 backdrop-blur">
-        <div className="mx-auto grid max-w-7xl grid-cols-[minmax(0,1fr)_auto] items-center gap-4 px-4 py-3 lg:px-8">
+      <header className="sticky top-0 z-40 border-b border-border/60 bg-background/95 backdrop-blur-md">
+        <div className="mx-auto grid max-w-7xl grid-cols-[minmax(0,1fr)_auto] items-center gap-4 px-4 py-4 lg:px-8">
           <div className="flex min-w-0 items-center gap-3">
-            <Link to="/" className="flex shrink-0 items-center gap-2">
-              <span className="grid h-10 w-10 shrink-0 place-items-center rounded-2xl bg-primary text-primary-foreground">
-                <PawPrint className="h-5 w-5" aria-hidden />
+            <Link to="/" className="flex shrink-0 items-center gap-2.5 transition-opacity hover:opacity-90">
+              <span className="grid h-11 w-11 shrink-0 place-items-center rounded-2xl bg-primary text-primary-foreground shadow-md">
+                <PawPrint className="h-5.5 w-5.5" aria-hidden />
               </span>
               <span className="hidden font-display text-xl font-bold sm:block">FurEver Care</span>
             </Link>
@@ -98,7 +98,7 @@ export function AppShell({ children }: { children: ReactNode }) {
                 <p className="truncate text-sm font-bold text-plum">
                   Welcome, {firstName(userName)}
                   {role && (
-                    <span className="ml-2 rounded-full bg-blush px-2 py-0.5 text-[11px] font-semibold text-blush-foreground">
+                    <span className="ml-2 rounded-full bg-blush px-2.5 py-0.5 text-[11px] font-semibold text-blush-foreground shadow-sm">
                       {ROLE_LABEL[role]}
                     </span>
                   )}
@@ -114,17 +114,17 @@ export function AppShell({ children }: { children: ReactNode }) {
               <LiveClock />
               <VisitorCounter />
             </div>
-            <nav className="hidden items-center gap-5 lg:flex">{links()}</nav>
+            <nav className="hidden items-center gap-6 lg:flex">{links()}</nav>
             <Sheet open={open} onOpenChange={setOpen}>
               <SheetTrigger asChild>
-                <Button variant="outline" size="icon" className="lg:hidden" aria-label="Open menu">
+                <Button variant="outline" size="icon" className="lg:hidden rounded-xl" aria-label="Open menu">
                   <Menu className="h-5 w-5" />
                 </Button>
               </SheetTrigger>
-              <SheetContent side="right" className="w-72">
-                <SheetTitle className="font-display">Menu</SheetTitle>
-                <nav className="mt-6 flex flex-col gap-4">{links(() => setOpen(false))}</nav>
-                <div className="mt-6 flex flex-wrap gap-2">
+              <SheetContent side="right" className="w-80">
+                <SheetTitle className="font-display text-xl">Menu</SheetTitle>
+                <nav className="mt-8 flex flex-col gap-5">{links(() => setOpen(false))}</nav>
+                <div className="mt-6 flex flex-wrap gap-3">
                   <LiveClock />
                   <VisitorCounter />
                 </div>
@@ -136,12 +136,15 @@ export function AppShell({ children }: { children: ReactNode }) {
 
       <main className="page-enter flex-1">{children}</main>
 
-      <footer className="mt-16 border-t border-border bg-cream">
-        <div className="mx-auto flex max-w-7xl flex-col gap-4 px-4 py-8 text-sm sm:flex-row sm:items-center sm:justify-between lg:px-8">
-          <p className="font-display text-base font-bold text-plum">
-            FurEver Care — They Deserve Forever Love
-          </p>
-          <nav className="flex flex-wrap gap-4">{links()}</nav>
+      <footer className="mt-20 border-t border-border/60 bg-cream/50 backdrop-blur-sm">
+        <div className="mx-auto flex max-w-7xl flex-col gap-6 px-4 py-10 text-sm sm:flex-row sm:items-center sm:justify-between lg:px-8">
+          <div className="space-y-1">
+            <p className="font-display text-lg font-bold text-plum">
+              FurEver Care
+            </p>
+            <p className="text-muted-foreground">They Deserve Forever Love</p>
+          </div>
+          <nav className="flex flex-wrap gap-5">{links()}</nav>
         </div>
       </footer>
     </div>
@@ -158,7 +161,7 @@ export function PageHeader({
   subtitle?: string;
 }) {
   return (
-    <div className="paw-pattern border-b border-border">
+    <div className="border-b border-border">
       <div className="mx-auto max-w-7xl px-4 py-10 lg:px-8">
         {eyebrow && (
           <p className="text-xs font-bold uppercase tracking-[0.2em] text-primary">{eyebrow}</p>

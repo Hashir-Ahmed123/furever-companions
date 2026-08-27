@@ -190,10 +190,10 @@
 
 @utility card-lift {
   transition:
-    transform 0.25s ease,
-    box-shadow 0.25s ease;
+    transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   &:hover {
-    transform: translateY(-6px);
+    transform: translateY(-8px);
     box-shadow: var(--shadow-lift);
   }
 }
@@ -225,5 +225,5 @@
 }
 
 @utility page-enter {
-  animation: furever-fade-up 0.45s ease both;
+  animation: furever-fade-up 0.5s cubic-bezier(0.4, 0, 0.2, 1) both;
 }

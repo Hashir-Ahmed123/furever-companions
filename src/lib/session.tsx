@@ -1,4 +1,5 @@
-import { createContext, useContext, useMemo, useState, type ReactNode } from "react";
+import { createContext, useContext, useMemo, useState, useEffect, type ReactNode } from "react";
+import { getCurrentUser, saveUser, updateUserPet, updateUserVet, clearCurrentUser } from "./userData";
 
 export type UserRole = "owner" | "vet" | "shelter";
 
@@ -37,6 +38,17 @@ export function SessionProvider({ children }: { children: ReactNode }) {
   const [pet, setPetState] = useState<PetProfile | null>(null);
   const [vet, setVetState] = useState<VetProfile | null>(null);
 
+  // Load user data from localStorage on mount
+  useEffect(() => {
+    const currentUser = getCurrentUser();
+    if (currentUser) {
+      setUserName(currentUser.name);
+      setRole(currentUser.role);
+      setPetState(currentUser.pet || null);
+      setVetState(currentUser.vet || null);
+    }
+  }, []);
+
   const value = useMemo<SessionValue>(
     () => ({
       userName,
@@ -46,14 +58,26 @@ export function SessionProvider({ children }: { children: ReactNode }) {
       setUser: (name, nextRole) => {
         setUserName(name);
         setRole(nextRole);
+        saveUser(name, nextRole);
       },
-      setPet: setPetState,
-      setVet: setVetState,
+      setPet: (petData) => {
+        setPetState(petData);
+        if (userName && role) {
+          updateUserPet(userName, role, petData);
+        }
+      },
+      setVet: (vetData) => {
+        setVetState(vetData);
+        if (userName && role) {
+          updateUserVet(userName, role, vetData);
+        }
+      },
       reset: () => {
         setUserName("");
         setRole(null);
         setPetState(null);
         setVetState(null);
+        clearCurrentUser();
       },
     }),
     [userName, role, pet, vet],

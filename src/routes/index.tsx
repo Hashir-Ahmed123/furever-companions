@@ -1,12 +1,13 @@
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { PawPrint, Heart, Stethoscope, Home as HomeIcon, ShieldCheck, Bone } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Ticker } from "@/components/furever/Ticker";
-import { useSession, ROLE_HOME, type UserRole } from "@/lib/session";
+import { useSession, ROLE_HOME, ROLE_LABEL, type UserRole } from "@/lib/session";
+import { getCurrentUser, clearCurrentUser } from "@/lib/userData";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -44,61 +45,87 @@ const HIGHLIGHTS = [
 
 function Landing() {
   const navigate = useNavigate();
-  const { setUser } = useSession();
+  const { setUser, userName, role } = useSession();
   const [name, setName] = useState("");
-  const [role, setRole] = useState<UserRole | "">("");
+  const [selectedRole, setRole] = useState<UserRole | "">("");
   const [error, setError] = useState("");
+  const [existingUser, setExistingUser] = useState(false);
+
+  // Check for existing user on mount
+  useEffect(() => {
+    const currentUser = getCurrentUser();
+    if (currentUser) {
+      setExistingUser(true);
+      setName(currentUser.name);
+      setRole(currentUser.role);
+    }
+  }, []);
 
   const submit = (e: React.FormEvent) => {
     e.preventDefault();
     if (!name.trim()) return setError("Please tell us your name.");
-    if (!role) return setError("Please choose a category to continue.");
+    if (!selectedRole) return setError("Please choose a category to continue.");
     setError("");
-    setUser(name.trim(), role);
-    navigate({ to: ROLE_HOME[role] });
+    setUser(name.trim(), selectedRole);
+    navigate({ to: ROLE_HOME[selectedRole] });
+  };
+
+  const handleContinue = () => {
+    if (userName && role) {
+      navigate({ to: ROLE_HOME[role] });
+    }
+  };
+
+  const handleStartFresh = () => {
+    clearCurrentUser();
+    setExistingUser(false);
+    setName("");
+    setRole("");
   };
 
   return (
     <div className="min-h-screen">
       <Ticker />
-      <div className="paw-pattern">
-        <div className="mx-auto grid max-w-7xl gap-10 px-4 py-12 lg:grid-cols-2 lg:items-center lg:px-8 lg:py-20">
-          <div className="page-enter">
-            <span className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-4 py-1.5 text-xs font-bold uppercase tracking-[0.18em] text-primary">
-              <PawPrint className="h-4 w-4" aria-hidden /> 100% pet-loving care
-            </span>
-            <div className="mt-6 flex items-center gap-3">
-              <span className="grid h-14 w-14 place-items-center rounded-3xl bg-primary text-primary-foreground shadow-[var(--shadow-soft)]">
-                <PawPrint className="h-7 w-7" aria-hidden />
+      <div>
+        <div className="mx-auto grid max-w-7xl gap-12 px-4 py-16 lg:grid-cols-2 lg:items-center lg:px-8 lg:py-24">
+          <div className="page-enter space-y-8">
+            <div className="space-y-6">
+              <span className="inline-flex items-center gap-2 rounded-full border border-border bg-card/80 backdrop-blur-sm px-5 py-2 text-xs font-bold uppercase tracking-[0.18em] text-primary shadow-sm">
+                <PawPrint className="h-4 w-4" aria-hidden /> 100% pet-loving care
               </span>
-              <p className="font-display text-2xl font-extrabold tracking-tight text-plum">
-                FurEver Care
+              <div className="flex items-center gap-4">
+                <span className="grid h-16 w-16 place-items-center rounded-3xl bg-primary text-primary-foreground shadow-[var(--shadow-soft)]">
+                  <PawPrint className="h-8 w-8" aria-hidden />
+                </span>
+                <p className="font-display text-3xl font-extrabold tracking-tight text-plum">
+                  FurEver Care
+                </p>
+              </div>
+              <h1 className="font-display text-5xl font-extrabold leading-[1.1] text-plum sm:text-6xl lg:text-7xl">
+                Happy pets.
+                <br />
+                Healthy homes.
+                <br />
+                <span className="text-primary">They deserve forever love.</span>
+              </h1>
+              <p className="max-w-xl text-lg text-muted-foreground sm:text-xl">
+                One warm little place for pet owners, veterinarians and shelter volunteers — care
+                guides, adoption stories, vet schedules and everyday essentials.
               </p>
             </div>
-            <h1 className="mt-6 font-display text-4xl font-extrabold leading-[1.05] text-plum sm:text-6xl">
-              Happy pets.
-              <br />
-              Healthy homes.
-              <br />
-              <span className="text-primary">They deserve forever love.</span>
-            </h1>
-            <p className="mt-5 max-w-lg text-base text-muted-foreground sm:text-lg">
-              One warm little place for pet owners, veterinarians and shelter volunteers — care
-              guides, adoption stories, vet schedules and everyday essentials.
-            </p>
 
-            <div className="mt-8 grid gap-3 sm:grid-cols-2">
+            <div className="grid gap-4 sm:grid-cols-2">
               {HIGHLIGHTS.map((h) => (
                 <div
                   key={h.title}
-                  className="card-lift flex items-start gap-3 rounded-2xl border border-border bg-card/80 p-4"
+                  className="card-lift flex items-start gap-4 rounded-2xl border border-border bg-card/90 backdrop-blur-sm p-5 shadow-sm"
                 >
-                  <span className="grid h-9 w-9 shrink-0 place-items-center rounded-xl bg-sage text-sage-foreground">
-                    <h.icon className="h-4.5 w-4.5" aria-hidden />
+                  <span className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-sage text-sage-foreground shadow-sm">
+                    <h.icon className="h-5 w-5" aria-hidden />
                   </span>
                   <div>
-                    <p className="font-display text-sm font-bold text-plum">{h.title}</p>
-                    <p className="text-xs text-muted-foreground">{h.text}</p>
+                    <p className="font-display text-base font-bold text-plum">{h.title}</p>
+                    <p className="mt-1 text-sm text-muted-foreground">{h.text}</p>
                   </div>
                 </div>
               ))}
@@ -107,68 +134,93 @@ function Landing() {
 
           <form
             onSubmit={submit}
-            className="page-enter rounded-4xl border border-border bg-card p-6 shadow-[var(--shadow-soft)] sm:p-8"
+            className="page-enter rounded-4xl border border-border bg-card/95 backdrop-blur-sm p-8 shadow-[var(--shadow-soft)] sm:p-10"
           >
-            <h2 className="font-display text-2xl font-extrabold text-plum">Let&apos;s get started</h2>
-            <p className="mt-1 text-sm text-muted-foreground">
-              Tell us who you are so we can tailor your dashboard.
-            </p>
+            {existingUser ? (
+              <div className="space-y-6">
+                <div className="space-y-2">
+                  <h2 className="font-display text-3xl font-extrabold text-plum">Welcome back!</h2>
+                  <p className="text-base text-muted-foreground">
+                    We found your previous session as <strong className="text-plum">{name}</strong> ({ROLE_LABEL[selectedRole as UserRole] || selectedRole}).
+                  </p>
+                </div>
+                <div className="flex gap-3">
+                  <Button type="button" size="lg" onClick={handleContinue} className="flex-1 h-14 rounded-2xl text-base font-semibold">
+                    Continue where you left off
+                  </Button>
+                  <Button type="button" variant="outline" size="lg" onClick={handleStartFresh} className="flex-1 h-14 rounded-2xl text-base font-semibold">
+                    Start fresh
+                  </Button>
+                </div>
+              </div>
+            ) : (
+              <>
+                <div className="space-y-2">
+                  <h2 className="font-display text-3xl font-extrabold text-plum">Let&apos;s get started</h2>
+                  <p className="text-base text-muted-foreground">
+                    Tell us who you are so we can tailor your dashboard.
+                  </p>
+                </div>
 
-            <div className="mt-6 space-y-2">
-              <Label htmlFor="name">Your name</Label>
-              <Input
-                id="name"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-                placeholder="e.g. Amelia Rivers"
-                className="h-12 rounded-2xl"
-              />
-            </div>
+                <div className="mt-8 space-y-3">
+                  <Label htmlFor="name" className="text-base font-semibold">Your name</Label>
+                  <Input
+                    id="name"
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                    placeholder="e.g. Amelia Rivers"
+                    className="h-14 rounded-2xl text-base"
+                  />
+                </div>
 
-            <div className="mt-6 space-y-3">
-              <Label>Choose your category</Label>
-              <RadioGroup
-                value={role}
-                onValueChange={(v) => setRole(v as UserRole)}
-                className="gap-3"
-              >
-                {ROLES.map((r) => (
-                  <Label
-                    key={r.value}
-                    htmlFor={r.value}
-                    className={`flex cursor-pointer items-center gap-3 rounded-2xl border p-4 transition-colors ${
-                      role === r.value
-                        ? "border-primary bg-blush/60"
-                        : "border-border hover:bg-muted"
-                    }`}
+                <div className="mt-8 space-y-4">
+                  <Label className="text-base font-semibold">Choose your category</Label>
+                  <RadioGroup
+                    value={selectedRole}
+                    onValueChange={(v) => setRole(v as UserRole)}
+                    className="gap-4"
                   >
-                    <RadioGroupItem value={r.value} id={r.value} />
-                    <span className="grid h-10 w-10 place-items-center rounded-xl bg-sky text-sky-foreground">
-                      <r.icon className="h-5 w-5" aria-hidden />
-                    </span>
-                    <span>
-                      <span className="block font-display text-sm font-bold text-plum">
-                        {r.label}
-                      </span>
-                      <span className="block text-xs text-muted-foreground">{r.blurb}</span>
-                    </span>
-                  </Label>
-                ))}
-              </RadioGroup>
-            </div>
+                    {ROLES.map((r) => (
+                      <Label
+                        key={r.value}
+                        htmlFor={r.value}
+                        className={`flex cursor-pointer items-center gap-4 rounded-2xl border p-5 transition-all ${
+                          selectedRole === r.value
+                            ? "border-primary bg-blush/70 shadow-md"
+                            : "border-border bg-card/50 hover:bg-muted hover:border-border/80"
+                        }`}
+                      >
+                        <RadioGroupItem value={r.value} id={r.value} className="sr-only" />
+                        <span className={`grid h-12 w-12 place-items-center rounded-xl transition-colors ${
+                          selectedRole === r.value ? "bg-primary text-primary-foreground" : "bg-sky text-sky-foreground"
+                        }`}>
+                          <r.icon className="h-6 w-6" aria-hidden />
+                        </span>
+                        <span>
+                          <span className="block font-display text-base font-bold text-plum">
+                            {r.label}
+                          </span>
+                          <span className="block text-sm text-muted-foreground">{r.blurb}</span>
+                        </span>
+                      </Label>
+                    ))}
+                  </RadioGroup>
+                </div>
 
-            {error && (
-              <p role="alert" className="mt-4 text-sm font-semibold text-destructive">
-                {error}
-              </p>
+                {error && (
+                  <p role="alert" className="mt-6 text-sm font-semibold text-destructive">
+                    {error}
+                  </p>
+                )}
+
+                <Button type="submit" size="lg" className="mt-8 h-14 w-full rounded-2xl text-base font-semibold">
+                  Enter FurEver Care
+                </Button>
+                <p className="mt-4 text-center text-sm text-muted-foreground">
+                  Your data is saved locally in your browser.
+                </p>
+              </>
             )}
-
-            <Button type="submit" size="lg" className="mt-6 h-12 w-full rounded-2xl text-base">
-              Enter FurEver Care
-            </Button>
-            <p className="mt-3 text-center text-xs text-muted-foreground">
-              Nothing is saved — this is a demo experience.
-            </p>
           </form>
         </div>
       </div>

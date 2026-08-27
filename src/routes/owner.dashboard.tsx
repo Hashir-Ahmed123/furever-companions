@@ -37,12 +37,12 @@ const HEALTH = [
   {
     title: "Oral & dental care",
     text: "Brush 3–4 times a week with pet-safe toothpaste. Watch for red gums or bad breath.",
-    audio: "/audio/oral-dental-care.mp3",
+    audio: "./audio/oral-dental-care.mp3",
   },
   {
     title: "Weight management",
     text: "Weigh monthly. Swap treats for extra play; obesity shortens lifespan by up to 2 years.",
-    audio: "/audio/weight-management.mp3",
+    audio: "./audio/weight-management.mp3",
   },
   {
     title: "Common conditions",
@@ -80,18 +80,18 @@ function OwnerDashboard() {
         title={`${pet.name}'s care dashboard`}
         subtitle="Feeding, grooming, health and training — tailored to your companion."
       />
-      <div className="mx-auto max-w-7xl px-4 py-10 lg:px-8">
+      <div className="mx-auto max-w-7xl px-4 py-12 lg:px-8">
         <Tabs defaultValue="profile">
-          <TabsList className="flex h-auto w-full flex-wrap justify-start gap-2 rounded-2xl bg-cream p-2">
-            <TabsTrigger value="profile" className="rounded-xl"><PawPrint className="mr-1.5 h-4 w-4" />Profile</TabsTrigger>
-            <TabsTrigger value="feeding" className="rounded-xl"><Utensils className="mr-1.5 h-4 w-4" />Feeding</TabsTrigger>
-            <TabsTrigger value="grooming" className="rounded-xl"><Scissors className="mr-1.5 h-4 w-4" />Grooming</TabsTrigger>
-            <TabsTrigger value="health" className="rounded-xl"><HeartPulse className="mr-1.5 h-4 w-4" />Health</TabsTrigger>
-            <TabsTrigger value="training" className="rounded-xl"><GraduationCap className="mr-1.5 h-4 w-4" />Training</TabsTrigger>
+          <TabsList className="flex h-auto w-full flex-wrap justify-start gap-2 rounded-2xl bg-cream/80 backdrop-blur-sm p-2.5">
+            <TabsTrigger value="profile" className="rounded-xl px-4 py-2.5"><PawPrint className="mr-2 h-4 w-4" />Profile</TabsTrigger>
+            <TabsTrigger value="feeding" className="rounded-xl px-4 py-2.5"><Utensils className="mr-2 h-4 w-4" />Feeding</TabsTrigger>
+            <TabsTrigger value="grooming" className="rounded-xl px-4 py-2.5"><Scissors className="mr-2 h-4 w-4" />Grooming</TabsTrigger>
+            <TabsTrigger value="health" className="rounded-xl px-4 py-2.5"><HeartPulse className="mr-2 h-4 w-4" />Health</TabsTrigger>
+            <TabsTrigger value="training" className="rounded-xl px-4 py-2.5"><GraduationCap className="mr-2 h-4 w-4" />Training</TabsTrigger>
           </TabsList>
 
-          <TabsContent value="profile" className="mt-6">
-            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          <TabsContent value="profile" className="mt-8">
+            <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
               {[
                 ["Name", pet.name],
                 ["Species", pet.species],
@@ -103,23 +103,23 @@ function OwnerDashboard() {
                 ["Colour", "Golden cream (sample)"],
                 ["Microchip ID", "985-1410-0032-771 (sample)"],
               ].map(([k, v]) => (
-                <div key={k} className="card-lift rounded-3xl border border-border bg-card p-5">
+                <div key={k} className="card-lift rounded-3xl border border-border bg-card/95 backdrop-blur-sm p-6 shadow-sm">
                   <p className="text-xs font-bold uppercase tracking-[0.15em] text-primary">{k}</p>
-                  <p className="mt-1 font-display text-lg font-bold text-plum">{v}</p>
+                  <p className="mt-2 font-display text-xl font-bold text-plum">{v}</p>
                 </div>
               ))}
             </div>
           </TabsContent>
 
-          <TabsContent value="feeding" className="mt-6 space-y-6">
-            <div className="overflow-hidden rounded-3xl border border-border bg-card">
+          <TabsContent value="feeding" className="mt-8 space-y-8">
+            <div className="overflow-hidden rounded-3xl border border-border bg-card/95 backdrop-blur-sm shadow-sm">
               <Table>
                 <TableHeader>
                   <TableRow>
-                    <TableHead>Life stage</TableHead>
-                    <TableHead>Meals</TableHead>
-                    <TableHead>Daily portion</TableHead>
-                    <TableHead>Notes</TableHead>
+                    <TableHead className="font-semibold text-plum">Life stage</TableHead>
+                    <TableHead className="font-semibold text-plum">Meals</TableHead>
+                    <TableHead className="font-semibold text-plum">Daily portion</TableHead>
+                    <TableHead className="font-semibold text-plum">Notes</TableHead>
                   </TableRow>
                 </TableHeader>
                 <TableBody>
@@ -134,19 +134,19 @@ function OwnerDashboard() {
                 </TableBody>
               </Table>
             </div>
-            <div className="rounded-3xl border border-border bg-card p-6">
-              <h3 className="font-display text-lg font-bold text-plum">Daily portion comparison</h3>
-              <div className="mt-5 space-y-4">
+            <div className="rounded-3xl border border-border bg-card/95 backdrop-blur-sm p-8 shadow-sm">
+              <h3 className="font-display text-xl font-bold text-plum">Daily portion comparison</h3>
+              <div className="mt-6 space-y-5">
                 {FEEDING.map((f) => {
                   const grams = parseInt(f.portion, 10);
                   return (
                     <div key={f.stage}>
                       <div className="flex justify-between text-sm font-semibold">
-                        <span>{f.stage}</span>
+                        <span className="text-plum">{f.stage}</span>
                         <span className="text-muted-foreground">{f.portion}</span>
                       </div>
-                      <div className="mt-1.5 h-3 overflow-hidden rounded-full bg-muted">
-                        <div className="h-full rounded-full bg-primary" style={{ width: `${(grams / 320) * 100}%` }} />
+                      <div className="mt-2 h-4 overflow-hidden rounded-full bg-muted">
+                        <div className="h-full rounded-full bg-primary transition-all duration-500" style={{ width: `${(grams / 320) * 100}%` }} />
                       </div>
                     </div>
                   );
@@ -155,10 +155,10 @@ function OwnerDashboard() {
             </div>
           </TabsContent>
 
-          <TabsContent value="grooming" className="mt-6">
-            <div className="grid gap-5 md:grid-cols-3">
+          <TabsContent value="grooming" className="mt-8">
+            <div className="grid gap-6 md:grid-cols-3">
               {GROOMING.map((g) => (
-                <div key={g.id} className="card-lift overflow-hidden rounded-3xl border border-border bg-card">
+                <div key={g.id} className="card-lift overflow-hidden rounded-3xl border border-border bg-card/95 backdrop-blur-sm shadow-sm">
                   <div className="aspect-video">
                     <iframe
                       className="h-full w-full"
@@ -169,19 +169,19 @@ function OwnerDashboard() {
                       allowFullScreen
                     />
                   </div>
-                  <p className="p-4 font-display font-bold text-plum">{g.title}</p>
+                  <p className="p-5 font-display text-lg font-bold text-plum">{g.title}</p>
                 </div>
               ))}
             </div>
           </TabsContent>
 
-          <TabsContent value="health" className="mt-6">
-            <div className="grid gap-5 md:grid-cols-3">
+          <TabsContent value="health" className="mt-8">
+            <div className="grid gap-6 md:grid-cols-3">
               {HEALTH.map((h) => (
-                <article key={h.title} className="card-lift rounded-3xl border border-border bg-card p-6">
-                  <h3 className="font-display text-lg font-bold text-plum">{h.title}</h3>
-                  <p className="mt-2 text-sm text-muted-foreground">{h.text}</p>
-                  <audio controls className="mt-4 w-full" preload="none">
+                <article key={h.title} className="card-lift rounded-3xl border border-border bg-card/95 backdrop-blur-sm p-7 shadow-sm">
+                  <h3 className="font-display text-xl font-bold text-plum">{h.title}</h3>
+                  <p className="mt-3 text-sm text-muted-foreground leading-relaxed">{h.text}</p>
+                  <audio controls className="mt-5 w-full" preload="none">
                     <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg" />
                   </audio>
                 </article>
@@ -189,13 +189,13 @@ function OwnerDashboard() {
             </div>
           </TabsContent>
 
-          <TabsContent value="training" className="mt-6">
-            <div className="grid gap-5 md:grid-cols-3">
+          <TabsContent value="training" className="mt-8">
+            <div className="grid gap-6 md:grid-cols-3">
               {TRAINING.map((t) => (
-                <article key={t.title} className="card-lift rounded-3xl border border-border bg-card p-6">
-                  <h3 className="font-display text-lg font-bold text-plum">{t.title}</h3>
-                  <p className="mt-2 text-sm text-muted-foreground">{t.text}</p>
-                  <audio controls className="mt-4 w-full" preload="none">
+                <article key={t.title} className="card-lift rounded-3xl border border-border bg-card/95 backdrop-blur-sm p-7 shadow-sm">
+                  <h3 className="font-display text-xl font-bold text-plum">{t.title}</h3>
+                  <p className="mt-3 text-sm text-muted-foreground leading-relaxed">{t.text}</p>
+                  <audio controls className="mt-5 w-full" preload="none">
                     <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3" type="audio/mpeg" />
                   </audio>
                 </article>
